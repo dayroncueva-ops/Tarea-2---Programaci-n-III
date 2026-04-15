@@ -51,11 +51,14 @@ int main() {
 
     vector <double> data {1, 2.7 , 0.3};
     auto v = core_numeric :: max ( data );
-    cout<<"El mayor valor de data es:"<<v<<endl;
-    auto r = core_numeric :: transform_reduce (data, []( double x) {
+    cout<<"El mayor valor de data es:"<<v<<endl; //Compila porque el requisito es que los elementos sean numeros
+    auto r = core_numeric :: transform_reduce (data, []( double x) { //Compila porque
         return x*x;
     });
     cout<<r;
+    // Compila porque la lambda recibe double y devuelve double,
+    // cumpliendo el requires: f(x) es válido y f(x)+f(x) también.
+    // Así, el resultado se puede acumular con += en transform_reduce.
     cout<<"\n------------------------\n";
 
     auto s1 = core_numeric :: sum_variadic (1 ,2 ,33 ,4);
@@ -68,6 +71,7 @@ int main() {
     cout<<s4<<endl;
     vector<int> vec{1,2,3,4};
     cout<<core_numeric::mean(vec);
+//Compilan porque el requisito es que los elementos sean números
 
 
 
@@ -101,6 +105,7 @@ int main() {
         return s.size();
     });
     */
+//No compila porque no se pueden operar strings
 
     // Usamos objetos para prueba de funcionalidad
     // Tipo sin +
